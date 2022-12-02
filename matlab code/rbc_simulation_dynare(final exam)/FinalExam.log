@@ -1,0 +1,73 @@
+Starting Dynare (version 5.0).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Found 7 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
+Processing outputs ...
+done
+Preprocessing completed.
+
+
+MODEL SUMMARY
+
+  Number of variables:         7
+  Number of stochastic shocks: 2
+  Number of state variables:   2
+  Number of jumpers:           2
+  Number of static variables:  3
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables          ea        ei
+ea           0.010000  0.000000
+ei           0.000000  0.002500
+
+POLICY AND TRANSITION FUNCTIONS
+                                   y               n               i          real_i              pi
+Constant                   -0.000495       -0.000495       -0.050000               0       -0.050000
+i(-1)                      -1.151536       -1.151536        0.302161        1.961624       -1.659462
+a(-1)                       0.416133       -0.533867       -0.032292        0.075348       -0.107639
+ea                          0.438035       -0.561965       -0.033991        0.079313       -0.113305
+ei                         -1.439420       -1.439420        0.377702        2.452030       -2.074328
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+y             -0.0005     0.1743     0.0304
+n             -0.0005     0.1800     0.0324
+i             -0.0500     0.0251     0.0006
+real_i         0.0000     0.1290     0.0166
+pi            -0.0500     0.1098     0.0121
+
+
+
+VARIANCE DECOMPOSITION (in percent)
+              ea      ei
+y          81.24   18.76
+n          82.40   17.60
+i          37.49   62.51
+real_i      0.63   99.37
+pi          1.81   98.19
+
+
+
+MATRIX OF CORRELATIONS
+Variables         y       n       i  real_i      pi
+y            1.0000 -0.6343 -0.8933 -0.4556  0.3315
+n           -0.6343  1.0000  0.2192 -0.3991  0.5190
+i           -0.8933  0.2192  1.0000  0.8071 -0.7202
+real_i      -0.4556 -0.3991  0.8071  1.0000 -0.9909
+pi           0.3315  0.5190 -0.7202 -0.9909  1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order          1       2       3       4       5
+y         0.8366  0.7605  0.7121  0.6734  0.6388
+n         0.8267  0.7481  0.6994  0.6611  0.6270
+i         0.5536  0.4062  0.3497  0.3213  0.3019
+real_i    0.3031  0.0924  0.0287  0.0095  0.0036
+pi        0.3077  0.0982  0.0347  0.0152  0.0091
+Total computing time : 0h00m02s
