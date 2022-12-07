@@ -11,7 +11,7 @@ T = 500;
 
 b1 = 1; 
 b2 = 2; 
-sig2 = 2; 
+sig2 = 3; 
 
 x1m = ones(T,1);
 x2m = rand(T,1)*5;
@@ -22,13 +22,13 @@ ym = x1m*b1 + x2m*b2 + em;
 %% Step 2: Estimation %%
 % Data
 Y = ym; 
-X = [x1m x2m]; 
+X = [x1m x2m];
 Data = [Y X];
 T = rows(X);
 k = cols(X);
 
 % initial value 
-psi0 = [0;0;1];
+psi0 = [0;0;1]; 
 
 % index
 index = [1;2;3];
