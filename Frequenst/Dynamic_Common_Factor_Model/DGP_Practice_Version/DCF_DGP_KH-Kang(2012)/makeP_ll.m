@@ -11,7 +11,7 @@ k = rows(F);
 % Vectorization
 Qvec = vec(Q);
 kronF = kron(F,F); 
-eyekronF = eye(k) - kronF;
+eyekronF = eye(k^2) - kronF;
 
 % Unconditional variance
 P_ll = (eyekronF)\Qvec; 

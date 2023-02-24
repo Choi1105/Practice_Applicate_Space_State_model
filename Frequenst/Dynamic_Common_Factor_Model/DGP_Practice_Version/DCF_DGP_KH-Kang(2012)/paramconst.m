@@ -22,7 +22,10 @@ validm(2) = minc(psi(indR)) > -5;
 validm(3) = minc(psi(indQ)) > -5;
 
 % Stationarity condition
-validm(4) = abs(psi(indF)) < 1;  
+phim = psi(indF);
+F = [phim(1) 0 0 ; 0 phim(2) 0 ; 0 0 phim(3)];
+eigF = eig(F);
+validm(4) = maxc(abs(eigF)) < 1;
 
 % Check whether all constranit satisfied
 valid = minc(validm); 

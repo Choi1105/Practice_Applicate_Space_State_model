@@ -1,4 +1,4 @@
-%% State-Space Model
+ %% State-Space Model
 % Dynamic Common Factor Model
 % y(1t) = C(t) + e(1t), e(1t) ~ iidN(0, sig2e1)
 % y(2t) = gam*C(t) + e(2t) , e(2t) ~ iidN(0, sig2e2)  
