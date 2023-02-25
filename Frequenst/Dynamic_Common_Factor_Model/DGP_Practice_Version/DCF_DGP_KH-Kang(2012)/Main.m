@@ -207,27 +207,58 @@ disp('===========================================================');
 i = 1:rows(Beta_ttm); 
 
 % Filtered value
-figure
-plot(i, cm ,'k', i, Beta_ttm, 'b:', 'LineWidth',1.5);
+tiledlayout(4,3)
+nexttile
+plot(i, Bt(1,:) ,'k', i, Beta_ttm(:,1), 'b:', 'LineWidth',1.5);
 legend('True','Filtered'); 
 title('True and Filtered Common Factor');
-
-figure
-plot(i, Beta_ttm ,'k', i, Beta_LB, 'b:', i, Beta_UB,'r:','LineWidth',1.5)
+nexttile
+plot(i, Bt(2,:) ,'k', i, Beta_ttm(:,2), 'b:', 'LineWidth',1.5);
+legend('True','Filtered'); 
+title('True and Filtered Common Factor');
+nexttile
+plot(i, Bt(3,:) ,'k', i, Beta_ttm(:,3), 'b:', 'LineWidth',1.5);
+legend('True','Filtered'); 
+title('True and Filtered Common Factor');
+nexttile
+plot(i, Beta_ttm(:,1) ,'k', i, Beta_LB(:,1), 'b:', i, Beta_UB(:,1),'r:','LineWidth',1.5)
+legend('Common Factor', 'Low Band', 'High Band');
+title('Filtered Common Factor and Confidence Interval');
+nexttile
+plot(i, Beta_ttm(:,2) ,'k', i, Beta_LB(:,2), 'b:', i, Beta_UB(:,2),'r:','LineWidth',1.5)
+legend('Common Factor', 'Low Band', 'High Band');
+title('Filtered Common Factor and Confidence Interval');
+nexttile
+plot(i, Beta_ttm(:,3) ,'k', i, Beta_LB(:,3), 'b:', i, Beta_UB(:,3),'r:','LineWidth',1.5)
 legend('Common Factor', 'Low Band', 'High Band');
 title('Filtered Common Factor and Confidence Interval');
 
-% Smoothed value
-figure
-plot(i, cm, 'k', i, Beta_tTm,'r:', 'LineWidth',1.5);
-legend('True','Smoothed');
-title('True and Smoothed Common Factor');
 
-figure
-plot(i, Beta_tTm ,'k', i, Beta_LB_SM, 'b:', i, Beta_UB_SM,'r:','LineWidth',1.5)
+% Smoothed value
+nexttile
+plot(i, Bt(1,:) ,'k', i, Beta_tTm(:,1), 'b:', 'LineWidth',1.5);
+legend('True','Smoothed'); 
+title('True and Smoothed Common Factor');
+nexttile
+plot(i, Bt(2,:) ,'k', i, Beta_tTm(:,2), 'b:', 'LineWidth',1.5);
+legend('True','Smoothed'); 
+title('True and Smoothed Common Factor');
+nexttile
+plot(i, Bt(3,:) ,'k', i, Beta_tTm(:,3), 'b:', 'LineWidth',1.5);
+legend('True','Smoothed'); 
+title('True and Smoothed Common Factor');
+nexttile
+plot(i, Beta_tTm(:,1) ,'k', i, Beta_LB_SM(:,1), 'b:', i, Beta_UB_SM(:,1),'r:','LineWidth',1.5)
 legend('Common Factor', 'Low Band', 'High Band');
 title('Smoothed Common Factor and Confidence Interval');
-
+nexttile
+plot(i, Beta_tTm(:,2) ,'k', i, Beta_LB_SM(:,2), 'b:', i, Beta_UB_SM(:,2),'r:','LineWidth',1.5)
+legend('Common Factor', 'Low Band', 'High Band');
+title('Smoothed Common Factor and Confidence Interval');
+nexttile
+plot(i, Beta_tTm(:,3) ,'k', i, Beta_LB_SM(:,3), 'b:', i, Beta_UB_SM(:,3),'r:','LineWidth',1.5)
+legend('Common Factor', 'Low Band', 'High Band');
+title('Smoothed Common Factor and Confidence Interval');
 
 
 
