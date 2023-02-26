@@ -7,7 +7,7 @@ function [theta] = maketheta(psi, Sn)
 
 % Variance > 0
 theta = psi;
-theta(Sn.indR) = exp(psi(Sn.indR)); 
 theta(Sn.indQ) = exp(psi(Sn.indQ)); 
+theta(Sn.indR) = exp(psi(Sn.indR)); 
 
 end

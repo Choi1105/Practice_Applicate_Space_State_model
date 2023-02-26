@@ -5,7 +5,7 @@
 function [lnL] = lnlik(psi,Sn)
 
 % Data
-ym = Sn.data; 
+ym = Sn.ym; 
 
 % Parameter transform / state space parameter form
 theta = maketheta(psi,Sn);

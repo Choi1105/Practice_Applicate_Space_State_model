@@ -9,25 +9,23 @@
 function [C,H,R,Mu,F,Q] = makePara(theta, Sn) 
 
 % Structure parameters
-indH = Sn.indH;
+xm = Sn.xm;
 indR = Sn.indR;
-indMu = Sn.indMu;
-indF = Sn.indF;
 indQ = Sn.indQ;
 
 % Transition equation
-Mu = theta(indMu);
+Mu = [0 0 0 0]';
 
-F = theta(indF);
+F = eye(4);
 
-Q = theta(indQ);
+sig2v = theta(indQ);
+Q = diag([sig2v(1),sig2v(2),sig2v(3),sig2v(4)]);
 
 % Measurement equation
-C = zeros(2,1);
+C = 0;
 
-H = ones(2,1); 
-H(2) = theta(indH); 
+H = xm;
 
-R = diag(theta(indR)); 
+R = theta(indR);
 
 end 

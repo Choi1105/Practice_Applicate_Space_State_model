@@ -12,6 +12,7 @@
 % y(10t) = Lambda(10row)*B(t) + e10(t), e10(t) ~ iidN(0, sig2e10)
 
 % tau = [3 6 9 12 18 24 30 36 60 120]
+% lambda = 0.15
 
 % Measurement equation 
 % Y(t) = L*B(t) + e(t) ~ iidN(0,R)
@@ -69,14 +70,12 @@ Cov1 = 0.1;
 Cov2 = 0.1;
 Cov3 = 0.1;
 
-tru_para = [log(sig2e1);log(sig2e2);log(sig2e3);log(sig2e4);log(sig2e5);log(sig2e6);log(sig2e7);log(sig2e8);log(sig2e9);log(sig2e10);mu1;mu2;mu3;phi1;phi2;phi3;log(sig2v1);log(sig2v2);log(sig2v3);log(Cov1);log(Cov2);log(Cov3)]; 
+tru_para = [sig2e1;sig2e2;sig2e3;sig2e4;sig2e5;sig2e6;sig2e7;sig2e8;sig2e9;sig2e10;mu1;mu2;mu3;phi1;phi2;phi3;sig2v1;sig2v2;sig2v3;Cov1;Cov2;Cov3]; 
 
 
 
 %% Step 2: Maxmimum Likelihood Estimation
-
 % Block for each parameters
-
 indR = [1;2;3;4;5;6;7;8;9;10];
 indMu = [11;12;13];
 indF = [14;15;16];
@@ -90,7 +89,7 @@ Sn.indF = indF;
 Sn.indQ = indQ;
 
 % Initial values
-psi0 = [log(sig2e1);log(sig2e2);log(sig2e3);log(sig2e4);log(sig2e5);log(sig2e6);log(sig2e7);log(sig2e8);log(sig2e9);log(sig2e10);mu1;mu2;mu3;phi1;phi2;phi3;log(sig2v1);log(sig2v2);log(sig2v3);log(Cov1);log(Cov2);log(Cov3)];
+psi0 = [sig2e1;sig2e2;sig2e3;sig2e4;sig2e5;sig2e6;sig2e7;sig2e8;sig2e9;sig2e10;mu1;mu2;mu3;phi1;phi2;phi3;sig2v1;sig2v2;sig2v3;Cov1;Cov2;Cov3];
 
 % Index
 indbj = 1:rows(psi0);
@@ -129,34 +128,43 @@ disp('===========================================================');
 disp([indbj tru_para thetamx t_val p_val]);
 disp('===========================================================');
 
+% final function value is 1524.7639
+
 % Figure
 % Index 
 i = 1:rows(Beta_ttm); 
 
 % Filtered value
-figure
-plot(i, cm ,'k', i, Beta_ttm, 'b:', 'LineWidth',1.5);
-legend('True','Filtered'); 
-title('True and Filtered Common Factor');
-
-figure
-plot(i, Beta_ttm ,'k', i, Beta_LB, 'b:', i, Beta_UB,'r:','LineWidth',1.5)
+tiledlayout(3,3)
+for z = 1:3
+nexttile
+plot(i, Beta_ttm(:,z) ,'k', i, Beta_LB(:,z), 'b:', i, Beta_UB(:,z),'r:','LineWidth',1.5)
 legend('Common Factor', 'Low Band', 'High Band');
 title('Filtered Common Factor and Confidence Interval');
+end
 
 % Smoothed value
-figure
-plot(i, cm, 'k', i, Beta_tTm,'r:', 'LineWidth',1.5);
-legend('True','Smoothed');
-title('True and Smoothed Common Factor');
-
-figure
-plot(i, Beta_tTm ,'k', i, Beta_LB_SM, 'b:', i, Beta_UB_SM,'r:','LineWidth',1.5)
+for z = 1:3
+nexttile
+plot(i, Beta_tTm(:,z) ,'k', i, Beta_LB_SM(:,z), 'b:', i, Beta_UB_SM(:,z),'r:','LineWidth',1.5)
 legend('Common Factor', 'Low Band', 'High Band');
 title('Smoothed Common Factor and Confidence Interval');
+end
 
+nexttile
+plot(data(:,10), 'k', LineWidth=1.5);
+legend('M120');
+title('M120 Data Plot(Level)');
 
+nexttile
+plot(-(data(:,10)-data(:,1)), 'k', LineWidth=1.5);
+legend('M120-M3');
+title('-1*(M120-M3) Data Plot(Slope)');
 
+nexttile
+plot(((data(:,6)*2)-(data(:,1) + data(:,10))), 'k', LineWidth=1.5);
+legend('(M24*2)-(M3+M120)');
+title('(M24*2)-(M3+M120) Data Plot(Curvature)');
 
 
 

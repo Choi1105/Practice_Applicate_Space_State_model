@@ -76,12 +76,12 @@ end
 
 % Generate y(t)
 y1 = cm + sqrt(sig2e1)*randn(t,1); 
-y2 2*cm + sqrt(sig2e2)*randn(t,1); 
+y2 = gam2*cm + sqrt(sig2e2)*randn(t,1); 
 y3 = gam3*cm + sqrt(sig2e3)*randn(t,1);
 y4 = gam4*cm + sqrt(sig2e4)*randn(t,1);
 y5 = gam5*cm + sqrt(sig2e5)*randn(t,1);
 y6 = gam6*cm + sqrt(sig2e6)*randn(t,1);
-y7 = gam7*cm + sqrt(sig2e7)*randn(t,1);= gam
+y7 = gam7*cm + sqrt(sig2e7)*randn(t,1);
 
 ym = [y1 y2 y3 y4 y5 y6 y7]; 
 

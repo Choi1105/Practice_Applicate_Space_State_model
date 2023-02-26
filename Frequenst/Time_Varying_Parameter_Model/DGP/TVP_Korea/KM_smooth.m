@@ -9,8 +9,8 @@ T = rows(ym);
 k = rows(Mu);
 
 % Initial value for Wild guess
-beta_ll = makeBeta_ll(F,Mu); 
-P_ll = makeP_ll(F,Q);
+beta_ll = zeros(k,1);
+P_ll = 1000*eye(k);
 
 %% Step 1: Forward (Kalman Filter)
 % Exactly same as KM_filter.m
@@ -27,13 +27,13 @@ for t = 1:T
     P_tl = F*P_ll*F'+ Q;
     P_tlm(:,:,t) = P_tl;
     
-    eta_tl = ym(t,:)' - C - H*beta_tl;
-    f_tl = H*P_tl*H'+ R;
+    eta_tl = ym(t,:)' - C - H(t)*beta_tl;
+    f_tl = H(t)*P_tl*H(t)'+ R;
     f_tl = (f_tl + f_tl')/2;
     
-    Kt = P_tl*H'*invpd(f_tl);
+    Kt = P_tl*H(t)'*invpd(f_tl);
     beta_tt = beta_tl + Kt*eta_tl;
-    P_tt = P_tl - Kt*H*P_tl;
+    P_tt = P_tl - Kt*H(t)*P_tl;
     
     Beta_ttm(t,:) = beta_tt';
     P_ttm(:,:,t) = P_tt;

@@ -11,8 +11,8 @@ N = cols(ym);
 k = rows(F); 
 
 % Initial value for Wild guess
-beta_ll = makeBeta_ll(F,Mu); 
-P_ll = makeP_ll(F,Q);
+beta_ll = zeros(k,1);
+P_ll = 1000*eye(k);
 
 % Pre-allocation
 lnLm = zeros(T,1); 
@@ -27,19 +27,21 @@ for t = 1:T
     P_tl = F*P_ll*F'+ Q; 
     
     % Conditional mean/var for measurement eq.
-    eta_tl = ym(t,:)' - C - H*beta_tl; 
-    f_tl = H*P_tl*H'+ R; 
+    eta_tl = ym(t,:)' - C - H(t)*beta_tl; 
+    f_tl = H(t)*P_tl*H(t)'+ R; 
     f_tl = (f_tl + f_tl')/2; 
     
-    % Compute likelihood values
-    lnLm(t) = lnpdfmvn(eta_tl,zeros(N,1),f_tl);
+    % When wild guessing, except for first some likelihood values
+    if t > 3
+        lnLm(t) = lnpdfmvn(eta_tl,zeros(N,1),f_tl);
+    end
 
     % Kalmain gain = weight on new information
-    Kt = P_tl*H'*invpd(f_tl); 
+    Kt = P_tl*H(t)'*invpd(f_tl); 
    
     % Updating
     beta_tt = beta_tl + Kt*eta_tl;
-    P_tt = P_tl - Kt*H*P_tl; 
+    P_tt = P_tl - Kt*H(t)*P_tl; 
     beta_ll = beta_tt;
     P_ll = P_tt;
     

@@ -7,23 +7,25 @@
 % y(5t) = gam5*C(t) + e(5t) , e(5t) ~ iidN(0, sig2e5)
 % y(6t) = gam6*C(t) + e(6t) , e(6t) ~ iidN(0, sig2e6)
 % y(7t) = gam7*C(t) + e(7t) , e(7t) ~ iidN(0, sig2e7)
+% where gam1 = 1
 
-% C(t) = Mu + phi1*C(t-1) + phi2*C(t-2) + w(t), w(t) ~ iidN(0, sig2w) 
+% NO correlation between e1(t), ... ,e7(t)
+% C(t) = Mu + phi1*C(t-1) + phi2*C(t-2) + v(t), v(t) ~ iidN(0, sig2v) 
 
 % Measurement equation
-% y(t) = H*B(t) + w(t), w(t) ~ iidN(0,R) 
+% Y(t) = C + H*B(t) + e(t), e(t) ~ iidN(0,R) 
 
 % Transition equation
 % B(t) = Mu + F*B(t-1) + v(t), v(t) ~ iidN(0,Q) 
 
 % SS Parameter
-% C = [0 0 0 0 0 0 0]', 
-% H = [gam1 0 ; gam2 0 ; gam3 0 ; gam4 0 ; gam5 0 ; gam6 0 ; gam7 0 ],
-% R = [sig2e1 0 0 0 0 0 0 ; 0 sig2e2 0 0 0 0 0 ;  0 0 sig2e3 0 0 0 0 ;  0 0 0 sig2e4 0 0 0 ;  0 0 0 0 sig2e5 0 0 ; 0 0 0 0 0 sig2e6 0 ; 0 0 0 0 0 0 sig2e7 ;]
+% C = [0 0 0 0 0 0 0]'
+% H = [1 gam2 gam3 gam4 gam5 gam6 gam7]'
+% R = diag([sig2e1; sig2e2; sig2e3; sig2e4; sig2e5; sig2e6; sig2e7])
 
-% Mu = [ mu 0 ]', 
-% F = [ phi1 phi2 ; 1 0 ], 
-% Q = [ sig2w 0 ; 0 0 ]
+% Mu = [alpha 0 0]' 
+% F = [ phi1 phi2 0 ; 1 0 0 ; 0 1 0 ] 
+% Q = diag([sig2v;0;0])
 
 clear; 
 clc; 
@@ -55,9 +57,9 @@ sig2e7 = 0.01;
 mu = 0; 
 phi1 = 0.01;
 phi2 = 0.01;
-sig2w=0.008;
+sig2v=0.008;
 
-tru_para = [gam2;gam3;gam4;gam5;gam6;gam7;sig2e1;sig2e2;sig2e3;sig2e4;sig2e5;sig2e6;sig2e7;mu;phi1;phi2;sig2w]; 
+initial_para = [gam2;gam3;gam4;gam5;gam6;gam7;sig2e1;sig2e2;sig2e3;sig2e4;sig2e5;sig2e6;sig2e7;mu;phi1;phi2;sig2v]; 
 
 
 %% Step 2: Maxmimum Likelihood Estimation
@@ -78,7 +80,7 @@ Sn.indF = indF;
 Sn.indQ = indQ;
 
 % Initial values
-psi0 = [gam2;gam3;gam4;gam5;gam6;gam7;sig2e1;sig2e2;sig2e3;sig2e4;sig2e5;sig2e6;sig2e7;mu;phi1;phi2;sig2w]; 
+psi0 = [gam2;gam3;gam4;gam5;gam6;gam7;sig2e1;sig2e2;sig2e3;sig2e4;sig2e5;sig2e6;sig2e7;mu;phi1;phi2;sig2v]; 
 
 % Index
 indbj = 1:rows(psi0);
@@ -114,38 +116,64 @@ Beta_UB_SM = Beta_tTm + 1.95*sqrt(P_tTm);
 disp('===========================================================');
 disp(['    Index ','  True Para ', ' Estimates ', ' t value ',  ' p value']);
 disp('===========================================================');
-disp([indbj tru_para thetamx t_val p_val]);
+disp([indbj initial_para thetamx t_val p_val]);
 disp('===========================================================');
 
 % Figure
 % Index 
 i = 1:rows(Beta_ttm);
 
-% Filtered value
-%figure
-%plot(i, data ,'k', i, Beta_ttm, 'b:', 'LineWidth',1.5);
-%legend('True','Filtered'); 
-%title('True and Filtered Common Factor');
 
-figure
-plot(i, Beta_ttm ,'k', i, Beta_LB, 'b:', i, Beta_UB,'r:','LineWidth',1.5)
-legend('Common Factor', 'Low Band', 'High Band');
-title('Filtered Common Factor and Confidence Interval');
+% Filtered value
+% Non-Log-Diff plot
+%tiledlayout(2,2)
+%nexttile
+%plot(i, Beta_ttm(:,1) ,'k', i, Beta_LB(:,1), 'b:', i, Beta_UB(:,1),'r:','LineWidth',1.5)
+%legend('Common Factor', 'Low Band', 'High Band');
+%title('Filtered Common Factor and Confidence Interval');
+
+% Log-1Diff plot
+tiledlayout(2,2)
+nexttile
+plot(i, Beta_ttm(:,1) ,'k');
+legend('Common Factor');
+title('Filtered Common Factor');
 
 % Smoothed value
-%figure
-%plot(i, data, 'k', i, Beta_tTm,'r:', 'LineWidth',1.5);
-%legend('True','Smoothed');
-%title('True and Smoothed Common Factor');
+% Non-Log-Diff plot
+%nexttile
+%plot(i, Beta_tTm(:,1) ,'k', i, Beta_LB_SM(:,1), 'b:', i, Beta_UB_SM(:,1),'r:','LineWidth',1.5)
+%legend('Common Factor', 'Low Band', 'High Band');
+%title('Smoothed Common Factor and Confidence Interval');
 
-figure
-plot(i, Beta_tTm ,'k', i, Beta_LB_SM, 'b:', i, Beta_UB_SM,'r:','LineWidth',1.5)
-legend('Common Factor', 'Low Band', 'High Band');
-title('Smoothed Common Factor and Confidence Interval');
+% Log-1Diff plot
+nexttile
+plot(i, Beta_tTm(:,1) ,'k');
+legend('Common Factor');
+title('Smoothed Common Factor');
 
+% Non-Log-Diff plot
+%ddd = readmatrix("Jeon_buk_refer.xlsx", 'Range', 'B2:C227');
+%nexttile
+%plot(i, ddd(:,1))
+%legend('동행종합지수')
+%title('동행종합지수 (2015 = 100)')
 
+%nexttile
+%plot(i, ddd(:,2))
+%legend('동행종합지수 순환변동치')
+%title('동행종합지수 순환변동치 (2015 = 100)')
 
+% Log-1Diff plot
+ddd = readmatrix("Jeon_buk_refer.xlsx", 'Range', 'L2:M226');
 
+nexttile
+plot(i, ddd(:,1))
+legend('Log-1Diff 동행종합지수')
+title('Log-1Diff 동행종합지수 (2015 = 100)')
 
-
+nexttile
+plot(i, ddd(:,2))
+legend('Log-1Diff 동행종합지수 순환변동치')
+title('Log-1Diff 동행종합지수 순환변동치 (2015 = 100)')
 

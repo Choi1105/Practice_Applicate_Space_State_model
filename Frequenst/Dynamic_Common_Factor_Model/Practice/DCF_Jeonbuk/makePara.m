@@ -16,18 +16,18 @@ indF = Sn.indF;
 indQ = Sn.indQ;
 
 % Transition equation
-Mu = [theta(indMu);0];
+Mu = [theta(indMu) 0 0 ]';
 
 phim = theta(indF);
-F = [ phim(1) phim(2) ; 1 0 ];
+F = [phim(1) phim(2) 0 ; 1 0 0 ; 0 1 0];
 
-Q = diag([theta(indQ);0]);
+Q = diag([theta(indQ);0;0]);
 
 % Measurement equation
 C = zeros(7,1);
 
-gam = theta(indH); 
-H = [1 0 ; gam(1) 0 ; gam(2) 0 ; gam(3) 0 ; gam(4) 0 ; gam(5) 0 ; gam(6) 0 ];
+Gam = theta(indH); 
+H = [1 0 0 ; Gam(1) 0 0 ; Gam(2) 0 0 ; Gam(3) 0 0 ; Gam(4) 0 0 ; Gam(5) 0 0 ; Gam(6) 0 0 ];
 
 sig = theta(indR);
 R = diag([sig(1);sig(2);sig(3);sig(4);sig(5);sig(6);sig(7)]); 
