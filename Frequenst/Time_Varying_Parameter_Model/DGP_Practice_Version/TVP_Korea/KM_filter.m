@@ -27,8 +27,8 @@ for t = 1:T
     P_tl = F*P_ll*F'+ Q; 
     
     % Conditional mean/var for measurement eq.
-    eta_tl = ym(t,:)' - C - H(t)*beta_tl; 
-    f_tl = H(t)*P_tl*H(t)'+ R; 
+    eta_tl = ym(t,:)' - C - H(t,:)*beta_tl; 
+    f_tl = H(t,:)*P_tl*H(t,:)'+ R; 
     f_tl = (f_tl + f_tl')/2; 
     
     % When wild guessing, except for first some likelihood values
@@ -37,11 +37,11 @@ for t = 1:T
     end
 
     % Kalmain gain = weight on new information
-    Kt = P_tl*H(t)'*invpd(f_tl); 
+    Kt = P_tl*H(t,:)'*invpd(f_tl); 
    
     % Updating
     beta_tt = beta_tl + Kt*eta_tl;
-    P_tt = P_tl - Kt*H(t)*P_tl; 
+    P_tt = P_tl - Kt*H(t,:)*P_tl; 
     beta_ll = beta_tt;
     P_ll = P_tt;
     

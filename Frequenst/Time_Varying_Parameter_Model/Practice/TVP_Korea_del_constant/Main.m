@@ -1,27 +1,29 @@
 %% State-Space Model
 % Time Varying Parameter Model
 
-% y(t) = X(t-1)*B(t) + e(t), e(t) ~ iidN (0, sig2e) 
-% Bi(t) = Bi(t-1) + vi(t), vi(t) ~ iidN(0, sig2vi) i = 0, 1, 2, 3
-% X(t-1) exogenous variable
-% X(t-1) = [ 1 pi(t-1) g(t-1) i(t-1) ]
-% Bi(t) = [ b0(t) b1(t) b2(t) b3(t) ]' 
+% Y(t) = B1(t)*Pi(t-1) + B2(t)*g(t-1) + B3(t)*i(t-1) + e(t), e(t) ~ iidN (0, sig2e) 
+% B1(t) = B1(t-1) + v1(t), v1(t) ~ iidN(0, sig2v1)
+% B2(t) = B2(t-1) + v2(t), v2(t) ~ iidN(0, sig2v2)
+% B3(t) = B3(t-1) + v3(t), v3(t) ~ iidN(0, sig2v3)
+
+% Pi(t-1), g(t-1), i(t-1) are exogenous variable
 
 % Measurement equation
-% y(t) = X(t-1)*B(t) + e(t), e(t) ~ N(0,R) 
+% y(t) = H*B(t) + e(t), e(t) ~ N(0,R) 
 
 % Transition equation
-% B(t) = B(t-1) + v(t), v(t) ~ N(0,Q) 
+% Bi(t) = Bi(t-1) + vi(t), vi(t) ~ N(0,Q) i = 1,2,3
  
 
 % SS Parameter
 % C = 0, 
-% H = X(t-1),
+% H = [pi(t-1) g(t-1) i(t-1)]
 % R = sig2e
 
-% Mu = [0 0 0 0]', 
-% F = eye(4), 
-% Q = [sig2v1 0 0 0 ; 0 sig2v2 0 0 ; 0 0 sig2v3 0 ; 0 0 0 sig2v4]
+% Mu = [0 0 0 ]' 
+% F = eye(3) 
+% Q = [sig2v1 0 0 ; 0 sig2v2 0 ; 0 0 sig2v3]
+
 clear;
 clc; 
 
@@ -29,19 +31,18 @@ clc;
 
 % Data information
 ym = readmatrix("TVP_DATA.xlsx", 'Range', 'C2:C261');
-x2m = readmatrix("TVP_DATA.xlsx", 'Range', 'A1:A260');
-x3m = readmatrix("TVP_DATA.xlsx", 'Range', 'B1:B260');
-x4m = readmatrix("TVP_DATA.xlsx", 'Range', 'C1:C260');
+xm1 = readmatrix("TVP_DATA.xlsx", 'Range', 'A1:A260');
+xm2 = readmatrix("TVP_DATA.xlsx", 'Range', 'B1:B260');
+xm3 = readmatrix("TVP_DATA.xlsx", 'Range', 'C1:C260');
 T = rows(ym);
-x1m = ones(T,1);
 k = 1;
 
-xm = [x1m x2m x3m x4m];
+xm = [xm1 xm2 xm3];
 
 
 % Initial Parameter
 sig2e = 0.2123;
-sig2v0 = 0.06322;
+
 sig2v1 = 0.0345;
 sig2v2 = 0.08234;
 sig2v3 = 0.0567875;
@@ -50,7 +51,7 @@ sig2v3 = 0.0567875;
 %% Step 2: Maxmimum Likelihood Estimation
 % Block for each parameters
 indR = 1;
-indQ = [2;3;4;5];
+indQ = [2;3;4];
 
 % Structure variables
 Sn.ym = ym;
@@ -59,7 +60,7 @@ Sn.indR = indR;
 Sn.indQ = indQ;
 
 % Initial values
-psi0 = [sig2e;sig2v0;sig2v1;sig2v2;sig2v3];
+psi0 = [sig2e;sig2v1;sig2v2;sig2v3];
 
 % Index
 indbj = 1:rows(psi0);
@@ -105,10 +106,12 @@ disp('===========================================================');
 i = 1:rows(Beta_ttm); 
 
 % Filtered values
-figure
-plot(i, Beta_ttm, 'k', i, Beta_LB, 'b:', i, Beta_UB,'r:','LineWidth',1.5)
-legend('Time-varying Parameters', 'Low Band', 'High Band');
-title('Filtered Time-varying Parameters');
+tiledlayout(3,2);
+for m = 1:3
+    nexttile
+    plot(i, Beta_ttm(:,m), 'k','LineWidth',1.5)%, i, Beta_LB(:,m), 'b:', i, Beta_UB(:,m),'r:','LineWidth',1.5)
+    legend('Time-varying Parameters')%, 'Low Band', 'High Band');
+    title('Filtered Time-varying Parameters');
 
 
 %figure
@@ -117,12 +120,12 @@ title('Filtered Time-varying Parameters');
 %title('True and Filtered Time-varying Parameters');
 
 % Smoothed values
-figure
-plot(i, Beta_tTm ,'k', i, Beta_LB_SM, 'b:', i, Beta_UB_SM,'r:','LineWidth',1.5)
-legend('Time-varying Parameters', 'Low Band', 'High Band');
-title('Smoothed Time-varying Parameters and Confidence Interval');
+    nexttile
+    plot(i, Beta_tTm(:,m) ,'k','LineWidth',1.5)%, i, Beta_LB_SM(:,m), 'b:', i, Beta_UB_SM(:,m),'r:','LineWidth',1.5)
+    legend('Time-varying Parameters')%, 'Low Band', 'High Band');
+    title('Smoothed Time-varying Parameters')% and Confidence Interval');
 
-
+end
 %figure
 %plot(i, bm, 'k', i, Beta_tTm,'b:', 'LineWidth',1.5);
 %legend('True','Smoothed');

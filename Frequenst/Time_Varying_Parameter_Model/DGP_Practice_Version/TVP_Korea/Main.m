@@ -29,27 +29,72 @@ clear;
 clc; 
 
 %% Step 1: Data Generating Process
-
 % Data information
-ym = readmatrix("TVP_DATA.xlsx", 'Range', 'C2:C261');
-xm1 = readmatrix("TVP_DATA.xlsx", 'Range', 'A1:A260');
-xm2 = readmatrix("TVP_DATA.xlsx", 'Range', 'B1:B260');
-xm3 = readmatrix("TVP_DATA.xlsx", 'Range', 'C1:C260');
-T = rows(ym);
-xm0 = ones(T,1);
-k = 1;
+T = 2000;     % Sample size 
+cut = 500;    % Burn-in size
+k = 1;        % # of latent variables
+              % (Actual sample size = T - cut)
+              
+% True Parameter
+sig2e = 0.14;
 
+sig2v0 = 0.22; 
+sig2v1 = 0.13; 
+sig2v2 = 0.14; 
+sig2v3 = 0.17; 
+
+% Set of true parameters
+tru_para = [sig2e;sig2v0;sig2v1;sig2v2;sig2v3];
+
+% Given exogenous variable
+xm0 = ones(T,1);
+xm1 = 5*randn(T,1); 
+xm2 = 5*randn(T,1);  
+xm3 = 5*randn(T,1);  
+
+% Pre-allocation for y(t), b(t)
+ym = zeros(T,1); 
+bm0 = zeros(T,1);
+bm1 = zeros(T,1);
+bm2 = zeros(T,1);
+bm3 = zeros(T,1);
+
+bm = [bm0 bm1 bm2 bm3]';
 xm = [xm0 xm1 xm2 xm3];
 
+% Initial y(t), b(t) for t = 1
+bm0(1) = randn(1,1)*sqrt(sig2v0);
+bm1(1) = randn(1,1)*sqrt(sig2v1);
+bm2(1) = randn(1,1)*sqrt(sig2v2);
+bm3(1) = randn(1,1)*sqrt(sig2v3);
 
-% Initial Parameter
-sig2e = 0.2123;
+ym(1) = xm(1)*bm(1) + randn(1,1)*sqrt(sig2e);
 
-sig2v0 = 0.06322;
-sig2v1 = 0.0345;
-sig2v2 = 0.08234;
-sig2v3 = 0.0567875;
+for t = 2:T
+    
+    bm0(t) = bm0(t-1) + randn(1,1)*sqrt(sig2v0);
+    bm1(t) = bm1(t-1) + randn(1,1)*sqrt(sig2v1);
+    bm2(t) = bm2(t-1) + randn(1,1)*sqrt(sig2v2);
+    bm3(t) = bm3(t-1) + randn(1,1)*sqrt(sig2v3);
 
+    ym(t) = xm0(t-1)*bm0(t) + xm1(t-1)*bm1(t) + xm2(t-1)*bm2(t) + xm3(t-1)*bm3(t) + randn(1,1)*sqrt(sig2e);
+    
+end
+
+
+% Burn-in
+ym = ym(cut+1:end);
+xm0 = xm0(cut+1:end);
+bm0 = bm0(cut+1:end);
+xm1 = xm1(cut+1:end);
+bm1 = bm1(cut+1:end);
+xm2 = xm2(cut+1:end);
+bm2 = bm2(cut+1:end);
+xm3 = xm3(cut+1:end);
+bm3 = bm3(cut+1:end);
+
+bm = [bm0 bm1 bm2 bm3];
+xm = [xm0 xm1 xm2 xm3];
 
 %% Step 2: Maxmimum Likelihood Estimation
 % Block for each parameters
@@ -109,28 +154,28 @@ disp('===========================================================');
 i = 1:rows(Beta_ttm); 
 
 % Filtered values
-tiledlayout(4,2);
-for m = 1:4
+tiledlayout(4,4)
+for k = 1:4
     nexttile
-    plot(i, Beta_ttm(:,m), 'k')%, i, Beta_LB(:,m), 'b:', i, Beta_UB(:,m),'r:','LineWidth',1.5)
-    legend('Time-varying Parameters')%, 'Low Band', 'High Band');
+    plot(i, Beta_ttm(:,k), 'k', i, Beta_LB(:,k), 'b:', i, Beta_UB(:,k),'r:','LineWidth',1.5)
+    legend('Time-varying Parameters', 'Low Band', 'High Band');
     title('Filtered Time-varying Parameters');
-
-
-%figure
-%plot(i, bm ,'k', i, Beta_ttm, 'b:', 'LineWidth',1.5);
-%legend('Time-varying Parameters','Filtered'); 
-%title('True and Filtered Time-varying Parameters');
+    nexttile
+    plot(i, bm(:,k) ,'k', i, Beta_ttm(:,k), 'b:', 'LineWidth',1.5); 
+    legend('Time-varying Parameters','Filtered'); 
+    title('True and Filtered Time-varying Parameters');
+end
 
 % Smoothed values
+
+for j = 1:4
     nexttile
-    plot(i, Beta_tTm(:,m) ,'k')%, i, Beta_LB_SM(:,m), 'b:', i, Beta_UB_SM(:,m),'r:','LineWidth',1.5)
-    legend('Time-varying Parameters')%, 'Low Band', 'High Band');
-    title('Smoothed Time-varying Parameters')% and Confidence Interval');
+    plot(i, Beta_tTm(:,j) ,'k', i, Beta_LB_SM(:,j), 'b:', i, Beta_UB_SM(:,j),'r:','LineWidth',1.5)
+    legend('Time-varying Parameters', 'Low Band', 'High Band');
+    title('Smoothed Time-varying Parameters and Confidence Interval');
 
+    nexttile
+    plot(i, bm(:,j), 'k', i, Beta_tTm(:,j),'b:', 'LineWidth',1.5);
+    legend('True','Smoothed');
+    title('True and Smoothed Time-varying Parameters');
 end
-%figure
-%plot(i, bm, 'k', i, Beta_tTm,'b:', 'LineWidth',1.5);
-%legend('True','Smoothed');
-%title('True and Smoothed Time-varying Parameters');
-
