@@ -64,9 +64,10 @@ $v_t$, $e_t$ = Independent white noise processes
 ## Result
 ![image](https://user-images.githubusercontent.com/109870987/222392656-319789e0-330a-45ef-a1cb-b40f3235ca02.png)
 
-+ Decomposition of trend and cyclical elements in Real GDP.
-+ There were cases where the model failed to find a trend and the results showed two cyclical factors.
++ Decomposition of trend and cyclical component in Real GDP.
++ There were cases where the model failed to find a trend component and the results showed two cyclical factors.
   + In this case, the problem was solved by removing the constraint of $\sigma^2_v$, the variance of the trend component, or by inducing a low value.
-
-![image](https://user-images.githubusercontent.com/109870987/222394744-53d9b8aa-7c47-41cd-a96d-f44c1edc1b04.png)
-+ The result was derived by setting the constraints as shown in the picture in **"paramconst"**, which is a sheet that gives constraints.
+  + The reason this constraint is acceptable is that trends should have lower variance than cycles.
+  + The result was derived by setting the constraints as shown in the picture in **"paramconst"**, which is a sheet that gives constraints.
+  
+    ![image](https://user-images.githubusercontent.com/109870987/222394744-53d9b8aa-7c47-41cd-a96d-f44c1edc1b04.png)
