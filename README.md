@@ -2,20 +2,25 @@
 ## ※ Notice ※
 ___
 + **Textbook**
-  + State-Space Models with Regime Switching -Classical and Gibbs-Sampling Approaches with Applications
+  + [State-Space Models with Regime Switching -Classical and Gibbs-Sampling Approaches with Applications](https://mitpress.mit.edu/9780262535502/state-space-models-with-regime-switching)
   + By Chang-Jin Kim and Daniel C R. Halbert 
   + Publisher: The MIT Press
 
 + **Code**
-  + This code is based on the work of Professor Young-min Kim, an assistant professor at Jeonbuk National University.
+  + This code is based on the work of Professor [Young-min Kim](https://kimymecon.weebly.com/matlab.html), an assistant professor at Jeonbuk National University.
 
 + **Data**
-  + Some data were referred to Professor Chang-jin Kim's data, and others were obtained from KOSIS.
+  + Some data were referred to Professor [Chang-jin Kim's data](http://econ.korea.ac.kr/~cjkim/), and others were obtained from [KOSIS](https://kosis.kr/statHtml/statHtml.do?orgId=214&tblId=DT_214N_Z01900&vw_cd=MT_ZTITLE&list_id=214_21404&seqNo=&lang_mode=ko&language=kor&obj_var_id=&itm_id=&conn_path=MT_ZTITLE).
+
++ **Reference**
+  + [Diebold, F. X., and C. L. Li, 2006, Forecasting the term structure of government bond yields,Journal of Econometrics130, pp. 337–364.](https://www.sas.upenn.edu/~fdiebold/papers/paper49/Diebold-Li.pdf)
+  + [Kang, K. H., 2012a, Forecasting the term structure of Korean Government bond tields usingthe dynamic Nelson-Siegel class models,Asia-Pacific Journal of Financial Studies41, pp.765–787.](https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12000)
 
 + **The meaning of each DGP, DGP_Practice, Practice is as follows.**
   + DGP : Data Generating Process (Basic Code)
   + DGP_Practice : Data Generating Process for models to be run in Practice (Modified code for Application)
   + Practice : Modified code and Real Data(Include result_plot)
+  
 ___
 
 ## ※ Index ※
