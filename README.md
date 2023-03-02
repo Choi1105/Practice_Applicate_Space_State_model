@@ -13,9 +13,9 @@ ___
   + Some data were referred to Professor Chang-jin Kim's data, and others were obtained from KOSIS.
 
 + **The meaning of each DGP, DGP_Practice, Practice is as follows.**
-  + DGP : Date Generating Process (Basic Code)
+  + DGP : Data Generating Process (Basic Code)
   + DGP_Practice : Data Generating Process for models to be run in Practice (Modified code for Application)
-  + Practice : Modified code with Real Data(Include result_plot)
+  + Practice : Modified code and Real Data(Include result_plot)
 ___
 
 ## ※ Index ※
