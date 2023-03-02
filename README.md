@@ -61,6 +61,21 @@ $X_t = \phi_1 * X_{t-1} + \phi_2 * X_{t-2} + e_t,\quad e_t \sim iidN(0, \sigma^2
 $N_t$ = Trend Component<br/>
 $X_t$ = Cyclical Component<br/>
 $v_t$, $e_t$ = Independent white noise processes
+
+**Measurement equation**<br/>
+$Y_t = H*B_t$ <br/>
+
+**Transition equation**<br/>
+$B_t = Mu + F*B_{t-1} + u_t,\quad u_t \sim N(0,Q)$ <br/>
+
+**SS Parameter**<br/>
+$C$ = 0  <br/>
+$H$ = [1 1 0]<br/>
+$R$ = 0  <br/>
+$Mu$ = [ $Mu$ ; 0 ; 0 ]<br/>
+$F$ = [ 1 0 0 ; 0  $\phi_1\ \phi_2$ ; 0 1 0 ] <br/>
+$Q$ = [ $\sigma_v^2$ 0 0 ; 0 $\sigma_e^2$ 0 ; 0 0 0 ]<br/>
+
 ## Result
 ![image](https://user-images.githubusercontent.com/109870987/222392656-319789e0-330a-45ef-a1cb-b40f3235ca02.png)
 
@@ -71,3 +86,43 @@ $v_t$, $e_t$ = Independent white noise processes
   + The result was derived by setting the constraints as shown in the picture in **"paramconst"**, which is a sheet that gives constraints.
   
     ![image](https://user-images.githubusercontent.com/109870987/222394744-53d9b8aa-7c47-41cd-a96d-f44c1edc1b04.png)
+___
+## **Dynamic Common Factor Model.**
+### Model 1 (Practice Jeonbuk)
+
+$Y_{1t} = \gamma_1 * C_{t} + e_{1t},\quad e_{1t} \sim iidN(0, \sigma^2_{e1})$<br/>
+$Y_{2t} = \gamma_2 * C_{t} + e_{2t},\quad e_{2t} \sim iidN(0, \sigma^2_{e2})$<br/>
+$Y_{3t} = \gamma_3 * C_{t} + e_{3t},\quad e_{3t} \sim iidN(0, \sigma^2_{e3})$<br/>
+$Y_{4t} = \gamma_4 * C_{t} + e_{4t},\quad e_{4t} \sim iidN(0, \sigma^2_{e4})$<br/>
+$Y_{5t} = \gamma_5 * C_{t} + e_{5t},\quad e_{5t} \sim iidN(0, \sigma^2_{e5})$<br/>
+$Y_{6t} = \gamma_6 * C_{t} + e_{6t},\quad e_{6t} \sim iidN(0, \sigma^2_{e6})$<br/>
+$Y_{7t} = \gamma_7 * C_{t} + e_{7t},\quad e_{7t} \sim iidN(0, \sigma^2_{e7})$<br/>
+<br/>
+$where \gamma_1 = 1$<br/>
+NO correlation between $e_1t, ... ,e_7t$<br/>
+
+$C_t = Mu + \phi_1 * C_{t-1} + \phi_2 * C_{t-2} + v_t,\quad v_t \sim iidN(0, \sigma^2_v)$<br/>
+
+**Measurement equation**<br/>
+$Y_t = C + H*B_t + E_t,\quad E_t \sim iidN(0, R)$ <br/>
+
+**Transition equation**<br/>
+$B_t = Mu + F*B_{t-1} + u_t,\quad u_t \sim N(0,Q)$ <br/>
+
+**SS Parameter**<br/>
+$C$ = [0 0 0 0 0 0 0]'  <br/>
+$H$ = [1 $\gamma_2\  \gamma_3\ \gamma_4\ \gamma_5\ \gamma_6\ \gamma_7\$]'<br/>
+$R$ = diag($\sigma^2_{e1}\,\sigma^2_{e2}\,\sigma^2_{e3}\,\sigma^2_{e4}\,\sigma^2_{e5}\,\sigma^2_{e6}\,\sigma^2_{e7}\$)<br/>
+$Mu$ = [ $Mu$ ; 0 ; 0 ]<br/>
+$F$ = [ $\phi_1\ \phi_2$ 0 ; 1 0 0 ; 0 1 0 ]  <br/>
+$Q$ = [ $\sigma_v^2$ 0 0 ; 0 0 0 ; 0 0 0 ]<br/>
+
+## Result
+![image](https://user-images.githubusercontent.com/109870987/222414639-c7491f32-85cc-4a86-982d-7414593534d0.png)
+
++ The result in the first row shows the estimated coincident composite index (Jeonbuk).<br/>
++ The result in the second row is the actual published coincident composite index (Jeonbuk).<br/>
++ The result in row 2, column 2 is the cyclical fluctuation of the coincident composite index, and the trend is removed from the result in row 2, column 1. <br/>
++ If you check the **Log_1Diff_result_Plot**, which is the result of estimation with the log-first-difference data, you can see that the estimation result and the picture of 2nd row, 2nd column are the same. <br/>
+
+
