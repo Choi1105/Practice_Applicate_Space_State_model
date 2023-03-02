@@ -122,7 +122,7 @@ $Q$ = [ $\sigma_v^2$ 0 0 ; 0 0 0 ; 0 0 0 ]<br/>
 
 + The result in the first row shows the estimated coincident composite index (Jeonbuk).<br/>
 + The result in the second row is the actual published coincident composite index (Jeonbuk).<br/>
-+ The result in row 2, column 2 is the cyclical fluctuation of the coincident composite index, and the trend is removed from the result in row 2, column 1. <br/>
++ The result in row 2, column 2 is the cyclical fluctuation of the coincident composite index, which the trend is removed from the result in row 2, column 1. <br/>
 + If you check the **Log_1Diff_result_Plot**, which is the result of estimation with the log-first-difference data, you can see that the estimation result and the picture of 2nd row, 2nd column are the same. <br/>
 
 
