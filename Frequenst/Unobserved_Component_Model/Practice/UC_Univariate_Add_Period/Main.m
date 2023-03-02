@@ -1,3 +1,5 @@
+
+
 %% State-Space Model
 
 % Unobserved Component Model (Bivariate)
@@ -110,33 +112,34 @@ disp('===========================================================');
 i = 1:rows(Beta_ttm); 
 
 % Filtered values
-figure
-plot(i, Beta_ttm(:,1) ,'k', i, Beta_LB(:,1), 'b:', i, Beta_UB(:,1),'r:','LineWidth',1.5)
-legend('Trend', 'Low Band', 'High Band');
+tiledlayout(2,3)
+nexttile
+plot(i, Beta_ttm(:,1) ,'k')%, i, Beta_LB(:,1), 'b:', i, Beta_UB(:,1),'r:','LineWidth',1.5)
+legend('Trend')%, 'Low Band', 'High Band');
 title('Filtered Trend and Confidence Interval');
 
-figure
-plot(i, Beta_ttm(:,2) ,'k', i, Beta_LB(:,2), 'b:', i, Beta_UB(:,2),'r:','LineWidth',1.5)
-legend('Cycle', 'Low Band', 'High Band');
-title('Filtered Cycle and Confidence Interval');
+nexttile
+plot(i, Beta_ttm(:,2) ,'k')%, i, Beta_LB(:,2), 'b:', i, Beta_UB(:,2),'r:','LineWidth',1.5)
+legend('Cycle')%, 'Low Band', 'High Band');
+title('Filtered Cycle')% and Confidence Interval');
 
-figure
+nexttile
 plot(i, data ,'k', i, Beta_ttm(:,1), 'b:', i, Beta_ttm(:,2), 'r:', 'LineWidth',1.5);
 legend('Data','Trend','Cycle'); 
 title('Data and Filtered Trend, Cycle');
 
 % Smoothed values
-figure
-plot(i, Beta_tTm(:,1) ,'k', i, Beta_LB_SM(:,1), 'b:', i, Beta_UB_SM(:,1),'r:','LineWidth',1.5)
-legend('Trend', 'Low Band', 'High Band');
-title('Smoothed Trend and Confidence Interval');
+nexttile
+plot(i, Beta_tTm(:,1) ,'k')%, i, Beta_LB_SM(:,1), 'b:', i, Beta_UB_SM(:,1),'r:','LineWidth',1.5)
+legend('Trend')%, 'Low Band', 'High Band');
+title('Smoothed Trend')% and Confidence Interval');
 
-figure
-plot(i, Beta_tTm(:,2) ,'k', i, Beta_LB_SM(:,2), 'b:', i, Beta_UB_SM(:,2),'r:','LineWidth',1.5)
-legend('Cycle', 'Low Band', 'High Band');
-title('Smoothed Cycle and Confidence Interval');
+nexttile
+plot(i, Beta_tTm(:,2) ,'k')%, i, Beta_LB_SM(:,2), 'b:', i, Beta_UB_SM(:,2),'r:','LineWidth',1.5)
+legend('Cycle')%, 'Low Band', 'High Band');
+title('Smoothed Cycle')% and Confidence Interval');
 
-figure
+nexttile
 plot(i, data ,'k', i, Beta_tTm(:,1), 'b:', i, Beta_tTm(:,2),'r:' , 'LineWidth',1.5);
 legend('Data','Trend','Cycle'); 
 title('Data and Smoothed Trend, Cycle');

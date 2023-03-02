@@ -82,7 +82,7 @@ Beta_UB = Beta_ttm + 1.95*sqrt(P_ttm);
 Beta_LB_SM = Beta_tTm - 1.95*sqrt(P_tTm);
 Beta_UB_SM = Beta_tTm + 1.95*sqrt(P_tTm);
 
-burn = 3;
+burn = 10;
 data = data(burn+1:end);
 Beta_ttm = Beta_ttm(burn+1:end,:);
 P_ttm = P_ttm(burn+1:end,:); 
@@ -105,33 +105,34 @@ disp('===========================================================');
 i = 1:rows(Beta_ttm); 
 
 % Filtered values
-figure
+tiledlayout(2,3)
+nexttile
 plot(i, Beta_ttm(:,1) ,'k', i, Beta_LB(:,1), 'b:', i, Beta_UB(:,1),'r:','LineWidth',1.5)
 legend('Trend', 'Low Band', 'High Band');
 title('Filtered Trend and Confidence Interval');
 
-figure
+nexttile
 plot(i, Beta_ttm(:,2) ,'k', i, Beta_LB(:,2), 'b:', i, Beta_UB(:,2),'r:','LineWidth',1.5)
 legend('Cycle', 'Low Band', 'High Band');
 title('Filtered Cycle and Confidence Interval');
 
-figure
+nexttile
 plot(i, data ,'k', i, Beta_ttm(:,1), 'b:', i, Beta_ttm(:,2), 'r:', 'LineWidth',1.5);
 legend('Data','Trend','Cycle'); 
 title('Data and Filtered Trend, Cycle');
 
 % Smoothed values
-figure
+nexttile
 plot(i, Beta_tTm(:,1) ,'k', i, Beta_LB_SM(:,1), 'b:', i, Beta_UB_SM(:,1),'r:','LineWidth',1.5)
 legend('Trend', 'Low Band', 'High Band');
 title('Smoothed Trend and Confidence Interval');
 
-figure
+nexttile
 plot(i, Beta_tTm(:,2) ,'k', i, Beta_LB_SM(:,2), 'b:', i, Beta_UB_SM(:,2),'r:','LineWidth',1.5)
 legend('Cycle', 'Low Band', 'High Band');
 title('Smoothed Cycle and Confidence Interval');
 
-figure
+nexttile
 plot(i, data ,'k', i, Beta_tTm(:,1), 'b:', i, Beta_tTm(:,2),'r:' , 'LineWidth',1.5);
 legend('Data','Trend','Cycle'); 
 title('Data and Smoothed Trend, Cycle');

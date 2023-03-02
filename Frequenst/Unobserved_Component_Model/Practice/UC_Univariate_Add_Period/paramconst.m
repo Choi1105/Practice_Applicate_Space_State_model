@@ -18,10 +18,14 @@ if maxc(isnan(psi)') == 1
 end 
 
 % Transition equation variance > 0  % control variance
-validm(2) = minc(psi(indQ)) > -8; % control variance
+Qmatrix = psi(indQ);
+validm(2) = minc(Qmatrix(1)) > -16;
+validm(3) = minc(Qmatrix(2)) > -4;
 % If sig2v and sig2w and sig2e is too low, then Function like Z(t) = Z(t-1)
 % so you have to constrain the parameter, especially variance of Error term
 
+% Qmatix(1) = Trend
+% Qmatix(2) = Cycle
 
 % Stationarity condition
 Phim = psi(indF);
