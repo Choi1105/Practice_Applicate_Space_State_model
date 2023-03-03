@@ -174,21 +174,43 @@ $Q$ = [ $\sigma_v^1$ $Cov_1$ $Cov_2$ ; $Cov_1$ $\sigma_v^2$ $Cov_3$ ; $Cov_2$ $C
 
 
 + Three-Factor Dynamic Nelson-Siegel Model result(Using Korean goverment bond).<br/>
++ $B1$ is similar to the $10year$ Korean government bond yield curve 
++ $B2$ is similar to the $10year - 3month$ Korean government bond yield curve 
++ $B3$ is similar to the $2year*2 - 10year + 3month$ Korean government bond yield curve 
 ___
 ## **Time Varying Parameter Model.**
 ### Model
 
-$Y_t = B0_t + B1_t*CPI_{t-1} + B2_t*IAIP_{t-1} + B3_t*I_{t-1} + e_t,\quad e_t \sim iidN(0, \sigma^2_e)$<br/>
+$I_t = B0_t + B1_t * CPI_{t-1} + B2_t * IAIP_{t-1} + B3_t * I_{t-1} + e_t,\quad e_t \sim iidN(0, \sigma^2_e)$<br/>
 
 $B0_{t} = B0_{t-1} + v_{0t},\quad v_{0t} \sim iidN(0, \sigma^2_{v0})$<br/>
 $B1_{t} = B1_{t-1} + v_{1t},\quad v_{1t} \sim iidN(0, \sigma^2_{v1})$<br/>
 $B2_{t} = B2_{t-1} + v_{2t},\quad v_{2t} \sim iidN(0, \sigma^2_{v2})$<br/>
 $B3_{t} = B3_{t-1} + v_{3t},\quad v_{3t} \sim iidN(0, \sigma^2_{v3})$<br/>
 
-$CPI$, $IAIP$, $I$ are exogenuous variable 
+$CPI$, $IAIP$, $I$ are exogenuous variable <br/>
+
+**Measurement equation**<br/>
+$Y_t = H*B_t + E_t,\quad E_t \sim iidN(0, R)$ <br/>
+
+**Transition equation**<br/>
+$B_{it} = B_{it-1} + u_{it},\quad u_{it} \sim N(0,Q)$\quad$i = 0,1,2,3$<br/>
+
+**SS Parameter**<br/>
+$C$ = 0  <br/>
+$H$ = [1  $CPI_{t-1}$  $IAIP_{t-1}$  $I_{t-1}$]<br/>
+$R$ = $\sigma^2_{e}$<br/>
+$Mu$ = [0 0 0 0]'<br/>
+$F$ = eye(4)  <br/>
+$Q$ = [ $\sigma_v^0$ 0  0  0 ; 0 $\sigma_v^1$ 0  0 ; 0  0  $\sigma_v^2$  0 ; 0  0  0  $\sigma_v^3$]<br/>
 
 
 
 
 ![image](https://user-images.githubusercontent.com/109870987/222680642-3f3e7199-e546-449a-94a9-b3252f41fefe.png)
 
++ The interest rate $I$ at period $t$ can be explained by the Constant term, Consumer Price Index($CPI$), Index of All Industrial Production($IAIP$)(excluding agriculture, forestry, etc), and Interst rate($I$) at period $t-1$.<br/>
++ B0 shows a downward trend over time and recently rises.
++ B1 shows a downward trend over time and recently rises.
++ B2 cannot be considered time-varying.
++ B3 time-varyed strongly around the end of 2008, but it cannot be said that it continued to time-vary throughout the entire period.
