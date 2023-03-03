@@ -130,4 +130,48 @@ $Q$ = [ $\sigma_v^2$ 0 0 ; 0 0 0 ; 0 0 0 ]<br/>
 + The result in row 2, column 2 is the cyclical fluctuation of the coincident composite index, which the trend is removed from the result in row 2, column 1. <br/>
 + If you check the **Log_1Diff_result_Plot**, which is the result of estimation with the log-first-difference data, you can see that the estimation result and the picture of 2nd row, 2nd column are the same. <br/>
 
+### Model 2 (Practice K.H_Kang(2012))
+
+$Y_{1t} = \Lambda_1 * B_{t} + e_{1t},\quad e_{1t} \sim iidN(0, \sigma^2_{e1})$<br/>
+$Y_{2t} = \Lambda_2 * B_{t} + e_{2t},\quad e_{2t} \sim iidN(0, \sigma^2_{e2})$<br/>
+$Y_{3t} = \Lambda_3 * B_{t} + e_{3t},\quad e_{3t} \sim iidN(0, \sigma^2_{e3})$<br/>
+$Y_{4t} = \Lambda_4 * B_{t} + e_{4t},\quad e_{4t} \sim iidN(0, \sigma^2_{e4})$<br/>
+$Y_{5t} = \Lambda_5 * B_{t} + e_{5t},\quad e_{5t} \sim iidN(0, \sigma^2_{e5})$<br/>
+$Y_{6t} = \Lambda_6 * B_{t} + e_{6t},\quad e_{6t} \sim iidN(0, \sigma^2_{e6})$<br/>
+$Y_{7t} = \Lambda_7 * B_{t} + e_{7t},\quad e_{7t} \sim iidN(0, \sigma^2_{e7})$<br/>
+$Y_{8t} = \Lambda_8 * B_{t} + e_{8t},\quad e_{8t} \sim iidN(0, \sigma^2_{e8})$<br/>
+$Y_{9t} = \Lambda_9 * B_{t} + e_{9t},\quad e_{9t} \sim iidN(0, \sigma^2_{e9})$<br/>
+$Y_{10t} = \Lambda_10 * B_{t} + e_{10t},\quad e_{10t} \sim iidN(0, \sigma^2_{e10})$<br/>
+
+$$\Lambda =
+\begin{bmatrix}
+1 & \frac{1-e^{-\tau_1\\lambda}}{\tau_1\\lambda} & \frac{1-e^{-\tau_1\\lambda}}{\tau_1\\lambda} - e^{-\tau_1\\lambda}\\
+1 & \frac{1-e^{-\tau_2\\lambda}}{\tau_2\\lambda} & \frac{1-e^{-\tau_2\\lambda}}{\tau_2\\lambda} - e^{-\tau_2\\lambda}\\
+\vdots  & \vdots  &  \vdots \\
+1 & \frac{1-e^{-\tau_N\\lambda}}{\tau_N\\lambda} & \frac{1-e^{-\tau_N\\lambda}}{\tau_N\\lambda}- e^{-\tau_N\\lambda}
+\end{bmatrix}$$
+
+$\tau = [3, 6, 9, 12, 18, 24, 30, 36, 60, 120]$  <br/>
+$\lambda = 0.15$ <br/>
+
+**Measurement equation**<br/>
+$Y_t = C + \Lambda*B_t + E_t,\quad E_t \sim iidN(0, R)$ <br/>
+
+**Transition equation**<br/>
+$B_t = [bL_t, bS_t, bC_t]\quad Level, Slope, Curvature$ <br/>
+$B_t = Mu + F*B_{t-1} + u_t,\quad u_t \sim N(0,Q)$ <br/>
+
+**SS Parameter**<br/>
+$C$ = [0 0 0 0 0 0 0 0 0 0]'  <br/>
+$H$ = $\Lambda$<br/>
+$R$ = diag($\sigma^2_{e1}\,\sigma^2_{e2}\,\sigma^2_{e3}\,\sigma^2_{e4}\,\sigma^2_{e5}\,\sigma^2_{e6}\,\sigma^2_{e7}\,\sigma^2_{e8}\,\sigma^2_{e9}\,\sigma^2_{e10}\$)<br/>
+$Mu$ = [ $Mu1$ ; $Mu2$ ; $Mu3$ ]<br/>
+$F$ = [ $\phi_1\$ 0 0 ; 0 $\phi_2$ 0 ; 0 0 $\phi_3$ ]  <br/>
+$Q$ = [ $\sigma_v^1$ $Cov_1$ $Cov_2$ ; $Cov_1$ $\sigma_v^2$ $Cov_3$ ; $Cov_2$ $Cov_3$ $\sigma_v^3$ ]<br/>
+
+## Result
+![image](https://user-images.githubusercontent.com/109870987/222676751-c76d8ba5-7df3-4679-8c2c-2f40b7a87789.png)
+
+
++ Three-Factor Dynamic Nelson-Siegel Model result.<br/>
 
