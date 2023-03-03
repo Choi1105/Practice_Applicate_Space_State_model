@@ -95,7 +95,15 @@ Beta_UB = Beta_ttm + 1.95*sqrt(P_ttm);
 Beta_LB_SM = Beta_tTm - 1.95*sqrt(P_tTm);
 Beta_UB_SM = Beta_tTm + 1.95*sqrt(P_tTm);
 
-
+burn = 10;
+Beta_ttm = Beta_ttm(burn+1:end,:);
+P_ttm = P_ttm(burn+1:end,:); 
+Beta_LB = Beta_LB(burn+1:end,:);
+Beta_UB = Beta_UB(burn+1:end,:);
+Beta_tTm = Beta_tTm(burn+1:end,:);
+P_tTm = P_tTm(burn+1:end,:);
+Beta_LB_SM = Beta_LB_SM(burn+1:end,:);
+Beta_UB_SM = Beta_UB_SM(burn+1:end,:);
 %% Step 3: Table / Figure Results 
 % Table
 disp('===========================================================');
@@ -112,7 +120,7 @@ i = 1:rows(Beta_ttm);
 tiledlayout(4,2);
 for m = 1:4
     nexttile
-    plot(i, Beta_ttm(:,m), 'k')%, i, Beta_LB(:,m), 'b:', i, Beta_UB(:,m),'r:','LineWidth',1.5)
+    plot(i, Beta_ttm(:,m), 'k', 'LineWidth',1.5)%, i, Beta_LB(:,m), 'b:', i, Beta_UB(:,m),'r:','LineWidth',1.5)
     legend('Time-varying Parameters')%, 'Low Band', 'High Band');
     title('Filtered Time-varying Parameters');
 
@@ -124,7 +132,7 @@ for m = 1:4
 
 % Smoothed values
     nexttile
-    plot(i, Beta_tTm(:,m) ,'k')%, i, Beta_LB_SM(:,m), 'b:', i, Beta_UB_SM(:,m),'r:','LineWidth',1.5)
+    plot(i, Beta_tTm(:,m) ,'k', 'LineWidth',1.5)%, i, Beta_LB_SM(:,m), 'b:', i, Beta_UB_SM(:,m),'r:','LineWidth',1.5)
     legend('Time-varying Parameters')%, 'Low Band', 'High Band');
     title('Smoothed Time-varying Parameters')% and Confidence Interval');
 
