@@ -210,7 +210,7 @@ $Q$ = [ $\sigma_v^0$ 0  0  0 ; 0 $\sigma_v^1$ 0  0 ; 0  0  $\sigma_v^2$  0 ; 0  
 ![image](https://user-images.githubusercontent.com/109870987/222680642-3f3e7199-e546-449a-94a9-b3252f41fefe.png)
 
 + The interest rate $I$ at period $t$ can be explained by the Constant term, Consumer Price Index($CPI$), Index of All Industrial Production($IAIP$)(excluding agriculture, forestry, etc), and Interst rate($I$) at period $t-1$.<br/>
-+ B0 shows a downward trend over time and recently rises.
-+ B1 shows a downward trend over time and recently rises.
-+ B2 cannot be considered time-varying.
-+ B3 time-varyed strongly around the end of 2008, but it cannot be said that it continued to time-vary throughout the entire period.
++ $B0$ shows a downward trend over time and recently rises.
++ $B1$ shows a downward trend over time and recently rises.
++ $B2$ cannot be considered time-varying.
++ $B3$ time-varyed strongly around the end of 2008, but it cannot be said that it continued to time-vary throughout the entire period.
