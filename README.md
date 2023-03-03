@@ -173,5 +173,22 @@ $Q$ = [ $\sigma_v^1$ $Cov_1$ $Cov_2$ ; $Cov_1$ $\sigma_v^2$ $Cov_3$ ; $Cov_2$ $C
 ![image](https://user-images.githubusercontent.com/109870987/222676751-c76d8ba5-7df3-4679-8c2c-2f40b7a87789.png)
 
 
-+ Three-Factor Dynamic Nelson-Siegel Model result.<br/>
++ Three-Factor Dynamic Nelson-Siegel Model result(Using Korean goverment bond).<br/>
+___
+## **Time Varying Parameter Model.**
+### Model
+
+$Y_t = B0_t + B1_t*CPI_{t-1} + B2_t*IAIP_{t-1} + B3_t*I_{t-1} + e_t,\quad e_t \sim iidN(0, \sigma^2_e)$<br/>
+
+$B0_{t} = B0_{t-1} + v_{0t},\quad v_{0t} \sim iidN(0, \sigma^2_{v0})$<br/>
+$B1_{t} = B1_{t-1} + v_{1t},\quad v_{1t} \sim iidN(0, \sigma^2_{v1})$<br/>
+$B2_{t} = B2_{t-1} + v_{2t},\quad v_{2t} \sim iidN(0, \sigma^2_{v2})$<br/>
+$B3_{t} = B3_{t-1} + v_{3t},\quad v_{3t} \sim iidN(0, \sigma^2_{v3})$<br/>
+
+$CPI$, $IAIP$, $I$ are exogenuous variable 
+
+
+
+
+![image](https://user-images.githubusercontent.com/109870987/222680642-3f3e7199-e546-449a-94a9-b3252f41fefe.png)
 
