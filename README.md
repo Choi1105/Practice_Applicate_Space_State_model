@@ -143,13 +143,13 @@ $Y_{8t} = \Lambda_8 * B_{t} + e_{8t},\quad e_{8t} \sim iidN(0, \sigma^2_{e8})$<b
 $Y_{9t} = \Lambda_9 * B_{t} + e_{9t},\quad e_{9t} \sim iidN(0, \sigma^2_{e9})$<br/>
 $Y_{10t} = \Lambda_10 * B_{t} + e_{10t},\quad e_{10t} \sim iidN(0, \sigma^2_{e10})$<br/>
 
-$$\Lambda =
+$\Lambda =
 \begin{bmatrix}
 1 & \frac{1-e^{-\tau_1\\lambda}}{\tau_1\\lambda} & \frac{1-e^{-\tau_1\\lambda}}{\tau_1\\lambda} - e^{-\tau_1\\lambda}\\
 1 & \frac{1-e^{-\tau_2\\lambda}}{\tau_2\\lambda} & \frac{1-e^{-\tau_2\\lambda}}{\tau_2\\lambda} - e^{-\tau_2\\lambda}\\
 \vdots  & \vdots  &  \vdots \\
 1 & \frac{1-e^{-\tau_N\\lambda}}{\tau_N\\lambda} & \frac{1-e^{-\tau_N\\lambda}}{\tau_N\\lambda}- e^{-\tau_N\\lambda}
-\end{bmatrix}$$
+\end{bmatrix}$
 
 $\tau = [3, 6, 9, 12, 18, 24, 30, 36, 60, 120]$  <br/>
 $\lambda = 0.15$ <br/>
