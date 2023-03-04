@@ -15,6 +15,11 @@ ___
 + **Reference**
   + [Diebold, F. X., and C. L. Li, 2006, Forecasting the term structure of government bond yields,Journal of Econometrics130, pp. 337–364.](https://www.sas.upenn.edu/~fdiebold/papers/paper49/Diebold-Li.pdf)
   + [Kang, K. H., 2012a, Forecasting the term structure of Korean Government bond tields usingthe dynamic Nelson-Siegel class models,Asia-Pacific Journal of Financial Studies41, pp.765–787.](https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12000)
+  + [Clark, P., 1987,The cyclical component of U.S. economic activity, Quarterly Journal of Economics 102, 797-814](https://www.jstor.org/stable/1884282)
+  + [Nelson, C. R., & Plosser, C. R. (1982). Trends and random walks in macroeconomic time series: Some evidence and implications. Journal of Monetary Economics, 10(2), 139–162.](https://www.sciencedirect.com/science/article/abs/pii/0304393282900125)
+  + [Burmeister, Edwin, and Kent Wall, "Kalman Filtering Estimation of Unobserved Rational Expectations with an Application to the German Hyperinflation," Journal of Econometrics, November 1982, 20, 255–84.](https://www.sciencedirect.com/science/article/abs/pii/0304407682900215)
+   + [Stock, J.H., Watson, M.W., 1991. A probability model of the coincident economic indicators. In: Moore, G., Lahiri, K. (Eds.), The Leading Economic Indicators: New Approaches and Forecasting Records. Cambridge
+University Press, Cambridge, pp. 63–89](https://www.nber.org/papers/w2772)
 
 + **The meaning of each DGP, DGP_Practice, Practice is as follows.**
   + DGP : Data Generating Process (Basic Code)
