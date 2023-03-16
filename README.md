@@ -91,6 +91,7 @@ $Q$ = [ $\sigma_v^2$ 0 0 ; 0 $\sigma_e^2$ 0 ; 0 0 0 ]<br/>
 
 ## Result
 ![image](https://user-images.githubusercontent.com/109870987/222392656-319789e0-330a-45ef-a1cb-b40f3235ca02.png)
+![image](https://user-images.githubusercontent.com/109870987/225605025-b2164c07-1fe0-4fbb-b152-e7aa78fceabf.png)
 
 + Decomposition of trend and cyclical component in Real GDP.
 + There were cases where the model failed to find a trend component and the results showed two cyclical factors.
