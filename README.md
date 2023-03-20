@@ -202,7 +202,7 @@ $CPI$, $IAIP$, $I$ are exogenuous variable <br/>
 $Y_t = H*B_t + E_t,\quad E_t \sim iidN(0, R)$ <br/>
 
 **Transition equation**<br/>
-$B_{it} = B_{it-1} + u_{it},\quad u_{it} \sim N(0,Q)$\quad$i = 0,1,2,3$<br/>
+$B_{it} = B_{it-1} + u_{it},\quad u_{it} \sim N(0,Q)\quad i = 0,1,2,3$<br/>
 
 **SS Parameter**<br/>
 $C$ = 0  <br/>
