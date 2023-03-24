@@ -65,7 +65,7 @@ ___
 ## ※ Summary ※
 ___
 ## **Unobserved Component Model.**
-### Model
+### Model 1.
 
 $Y_t = N_t + X_t$ <br/>
 $N_t = Mu +N_{t-1} + v_t,\quad v_t \sim iidN(0, \sigma^2_v)$<br/>
@@ -99,6 +99,46 @@ $Q$ = [ $\sigma_v^2$ 0 0 ; 0 $\sigma_e^2$ 0 ; 0 0 0 ]<br/>
   + The result was derived by setting the constraints as shown in the picture in **"paramconst"**, which is a sheet that gives constraints.
   
     ![image](https://user-images.githubusercontent.com/109870987/222394744-53d9b8aa-7c47-41cd-a96d-f44c1edc1b04.png)
+    
+### Model 2.(Real_Estate)
+
+$Y_t = N_t + X_t$ <br/>
+$N_t = Mu +N_{t-1} + v_t,\quad v_t \sim iidN(0, \sigma^2_v)$<br/>
+$X_t = \phi_1 * X_{t-1} + \phi_2 * X_{t-2} + \phi_3 * X_{t-3} + \phi_4 * X_{t-4} + e_t,\quad e_t \sim iidN(0, \sigma^2_e)$
+
+$N_t$ = Trend Component<br/>
+$X_t$ = Cyclical Component<br/>
+$v_t$, $e_t$ = Independent white noise processes
+
+**Measurement equation**<br/>
+$Y_t = H*B_t$ <br/>
+
+**Transition equation**<br/>
+$B_t = Mu + F*B_{t-1} + u_t,\quad u_t \sim N(0,Q)$ <br/>
+
+**SS Parameter**<br/>
+$C$ = 0  <br/>
+$H$ = [1 1 0 0 0]<br/>
+$R$ = 0  <br/>
+$Mu$ = [ $Mu$ ; 0 ; 0 ; 0 ; 0 ]<br/>
+$F$ = [ 1 0 0 0 0 ; 0  $\phi_1\ \phi_2$ $\phi_3\ \phi_4$ ; 0 1 0 0 0 ; 0 0 1 0 0 ; 0 0 0 1 0 ] <br/>
+$Q$ = [ $\sigma_v^2$ 0 0 0 0 ; 0 $\sigma_e^2$ 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ]<br/>
+
+## Result
+![image](https://user-images.githubusercontent.com/109870987/227563276-77a6fe29-dfdc-415f-87f2-30b379580047.png)
+![image](https://user-images.githubusercontent.com/109870987/227563363-eb2fbd4a-f676-418f-aee9-2d284afada55.png)
+
++ Decomposition of trend and cyclical component in Whole Rent Price Index and Number of lease registration orders.
++ Four experiments were conducted until the final model was selected. At this time, the experimented models are AR(1) to AR(4).
++ The final selection criterion is the calculated likelihood value of the model.(From the top to the bottom, AR (1) to AR (4))
+  + Price Likelihood Value   : 166.3205  Regist Likelihood Value  : 30.6869
+  + Price Likelihood Value   : 166.1470  Regist Likelihood Value  : 36.5027
+  + Price Likelihood Value   : 157.8658  Regist Likelihood Value  : 35.2445
+  + Price Likelihood Value   : 165.8597  Regist Likelihood Value  : 37.0061 (Selected Final Model)
+ 
+ #### Compare to HP Filter
+ ![image](https://user-images.githubusercontent.com/109870987/227563755-4b237b42-c599-4384-a2dd-06d3964f8e77.png)
+ 
 ___
 ## **Dynamic Common Factor Model.**
 ### Model 1 (Practice Jeonbuk)
