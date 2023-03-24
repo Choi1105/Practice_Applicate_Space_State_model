@@ -128,7 +128,7 @@ $Q$ = [ $\sigma_v^2$ 0 0 0 0 ; 0 $\sigma_e^2$ 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ; 0 
 ![image](https://user-images.githubusercontent.com/109870987/227563363-eb2fbd4a-f676-418f-aee9-2d284afada55.png)
 ![image](https://user-images.githubusercontent.com/109870987/227563276-77a6fe29-dfdc-415f-87f2-30b379580047.png)
 
-+ Decomposition of trend and cyclical component in Whole Rent Price Index and Number of lease registration orders.
++ Decomposition of trend and cyclical component in lump-sum housing lease price index and Number of lease registration orders.
 + Four experiments were conducted until the final model was selected. At this time, the experimented models are AR(1) to AR(4).
 + The final selection criterion is the calculated likelihood value of the model.(From the top to the bottom, AR (1) to AR (4))
   + Price Likelihood Value   : 166.3205  Regist Likelihood Value  : 30.6869
