@@ -131,10 +131,10 @@ $Q$ = [ $\sigma_v^2$ 0 0 0 0 ; 0 $\sigma_e^2$ 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ; 0 
 + Decomposition of trend and cyclical component in lump-sum housing lease price index and Number of lease registration orders.
 + Four experiments were conducted until the final model was selected. At this time, the experimented models are AR(1) to AR(4).
 + The final selection criterion is the calculated likelihood value of the model.(From the top to the bottom, AR (1) to AR (4))
-  + Price Likelihood Value   : 166.3205  Regist Likelihood Value  : 30.6869
-  + Price Likelihood Value   : 166.1470  Regist Likelihood Value  : 36.5027
-  + Price Likelihood Value   : 157.8658  Regist Likelihood Value  : 35.2445
-  + Price Likelihood Value   : 165.8597  Regist Likelihood Value  : 37.0061 (Selected Final Model)
+  + AR(1) = Price Likelihood Value   : 166.3205  Regist Likelihood Value  : 30.6869
+  + AR(2) = Price Likelihood Value   : 166.1470  Regist Likelihood Value  : 36.5027
+  + AR(3) = Price Likelihood Value   : 157.8658  Regist Likelihood Value  : 35.2445
+  + AR(4) = Price Likelihood Value   : 165.8597  Regist Likelihood Value  : 37.0061 (Selected Final Model)
  
  #### Compare to HP Filter
  ![image](https://user-images.githubusercontent.com/109870987/227563755-4b237b42-c599-4384-a2dd-06d3964f8e77.png)
