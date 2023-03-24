@@ -125,8 +125,8 @@ $F$ = [ 1 0 0 0 0 ; 0  $\phi_1\ \phi_2$ $\phi_3\ \phi_4$ ; 0 1 0 0 0 ; 0 0 1 0 0
 $Q$ = [ $\sigma_v^2$ 0 0 0 0 ; 0 $\sigma_e^2$ 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ]<br/>
 
 ## Result
-![image](https://user-images.githubusercontent.com/109870987/227563276-77a6fe29-dfdc-415f-87f2-30b379580047.png)
 ![image](https://user-images.githubusercontent.com/109870987/227563363-eb2fbd4a-f676-418f-aee9-2d284afada55.png)
+![image](https://user-images.githubusercontent.com/109870987/227563276-77a6fe29-dfdc-415f-87f2-30b379580047.png)
 
 + Decomposition of trend and cyclical component in Whole Rent Price Index and Number of lease registration orders.
 + Four experiments were conducted until the final model was selected. At this time, the experimented models are AR(1) to AR(4).
