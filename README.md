@@ -33,6 +33,7 @@ ___
 
 ## ※ Index ※
 ___
+## Space State Model
 + **Unobserved Component Model.**
   + DGP
     + UC_DGP
@@ -61,6 +62,38 @@ ___
   + Practice
     + TVP_Korea
     + TVP_Korea_Del_Constant
+
+## Regime Switching Models
++ **Unobserved Component Model.**
+  + DGP
+    + UC_DGP
+  + DGP_Practice
+    + UC_DGP_Bivariate_Practice_Version
+    + UC_DGP_Uivariate_Practice_Version
+  + Practice
+    + UC_Uivariate_Add_Period
+    + UC_Uivariate_Kims_Data
+    
++ **Dynamic Common Factor Model.**
+  + DGP
+    + DCF_DGP
+  + DGP_Practice
+    + DCF_DGP_JeonBuk_Practice_Version
+    + DCF_DGP_KH-Kang(2012)_Practice_Version
+  + Practice
+    + DCF_K.H_Kang(2012)
+    + DCF_Jeonbuk
+
++ **Time Varying Parameter Model.**
+  + DGP
+    + TVP_DGP
+  + DGP_Practice
+    + TVP_DGP_Korea_Practice_Version
+  + Practice
+    + TVP_Korea
+    + TVP_Korea_Del_Constant
+
+
 ___
 ## ※ Summary ※
 ___
