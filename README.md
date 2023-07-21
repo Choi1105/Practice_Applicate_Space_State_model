@@ -65,10 +65,21 @@ ___
 
 ## Regime Switching Models
 + **Serially Uncorrelated Data and Switching.**
-  + DGP
-    + The case of Independent Switching
+  + Uncorrelated Data and Switching DGP
+    + Beta_1_Sig_2
+    + Beta_2_Sig_1
+    + Beta_2_Sig_2
+    + Beta_2_Sig_2_OLS
+   
+  + Independent Switching DGP
+    + Independent Switching Non Exogenous Variable
+    + Independent Switching With Exogenous Variable
+    + Independent Switching Non Exogenous Variable With Paramconst
+      
+  + Markov Switching DGP
     + The case of Markov Switching
-    
+   
+      
 + **Serially Correlated Data and Switching.**
   + DGP
     + Dealing with the Problem of Unobserved $S_t$
