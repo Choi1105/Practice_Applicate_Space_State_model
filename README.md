@@ -64,39 +64,28 @@ ___
     + TVP_Korea_Del_Constant
 
 ## Regime Switching Models
-+ **Unobserved Component Model.**
++ **Serially Uncorrelated Data and Switching.**
   + DGP
-    + UC_DGP
-  + DGP_Practice
-    + UC_DGP_Bivariate_Practice_Version
-    + UC_DGP_Uivariate_Practice_Version
-  + Practice
-    + UC_Uivariate_Add_Period
-    + UC_Uivariate_Kims_Data
+    + The case of Independent Switching
+    + The case of Markov Switching
     
-+ **Dynamic Common Factor Model.**
++ **Serially Correlated Data and Switching.**
   + DGP
-    + DCF_DGP
-  + DGP_Practice
-    + DCF_DGP_JeonBuk_Practice_Version
-    + DCF_DGP_KH-Kang(2012)_Practice_Version
-  + Practice
-    + DCF_K.H_Kang(2012)
-    + DCF_Jeonbuk
+    + Dealing with the Problem of Unobserved $S_t$
 
-+ **Time Varying Parameter Model.**
++ **Structure Break.**
   + DGP
-    + TVP_DGP
-  + DGP_Practice
-    + TVP_DGP_Korea_Practice_Version
-  + Practice
-    + TVP_Korea
-    + TVP_Korea_Del_Constant
-
-
+    + 2Structure Break
+    + 3Structure Break
+    + Expected Duration of a Regime in a Markov-Switching Model
+      
++ **Kim's Smoothing Algorithm.**
+  + DGP
+    + Markov-Switching Dependent Model with Kim's Smoothing
+    + Markov-Switching Serially Correlated Model with Kim's Smoothing
 ___
 ## ※ Summary ※
-___
+
 ## **Unobserved Component Model.**
 ### Model 1.
 
