@@ -89,17 +89,7 @@ $Mu$ = [ $Mu$ ; 0 ; 0 ]<br/>
 $F$ = [ 1 0 0 ; 0  $\phi_1\ \phi_2$ ; 0 1 0 ] <br/>
 $Q$ = [ $\sigma_v^2$ 0 0 ; 0 $\sigma_e^2$ 0 ; 0 0 0 ]<br/>
 
-## Result
-![image](https://user-images.githubusercontent.com/109870987/222392656-319789e0-330a-45ef-a1cb-b40f3235ca02.png)
-
-+ Decomposition of trend and cyclical component in Real GDP.
-+ There were cases where the model failed to find a trend component and the results showed two cyclical factors.
-  + In this case, the problem was solved by removing the constraint of $\sigma^2_v$, the variance of the trend component, or by inducing a low value.
-  + The reason this constraint is acceptable is that trends should have lower variance than cycles.
-  + The result was derived by setting the constraints as shown in the picture in **"paramconst"**, which is a sheet that gives constraints.
-  
-    ![image](https://user-images.githubusercontent.com/109870987/222394744-53d9b8aa-7c47-41cd-a96d-f44c1edc1b04.png)
-    
+___
 ### Model 2.(Real_Estate)
 
 $Y_t = N_t + X_t$ <br/>
@@ -123,22 +113,7 @@ $R$ = 0  <br/>
 $Mu$ = [ $Mu$ ; 0 ; 0 ; 0 ; 0 ]<br/>
 $F$ = [ 1 0 0 0 0 ; 0  $\phi_1\ \phi_2$ $\phi_3\ \phi_4$ ; 0 1 0 0 0 ; 0 0 1 0 0 ; 0 0 0 1 0 ] <br/>
 $Q$ = [ $\sigma_v^2$ 0 0 0 0 ; 0 $\sigma_e^2$ 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ; 0 0 0 0 0 ]<br/>
-
-## Result
-![image](https://user-images.githubusercontent.com/109870987/227563363-eb2fbd4a-f676-418f-aee9-2d284afada55.png)
-![image](https://user-images.githubusercontent.com/109870987/227563276-77a6fe29-dfdc-415f-87f2-30b379580047.png)
-
-+ Decomposition of trend and cyclical component in lump-sum housing lease price index and Number of lease registration orders.
-+ Four experiments were conducted until the final model was selected. At this time, the experimented models are AR(1) to AR(4).
-+ The final selection criterion is the calculated likelihood value of the model.(From the top to the bottom, AR (1) to AR (4))
-  + AR(1) = Price Likelihood Value   : 166.3205  Regist Likelihood Value  : 30.6869
-  + AR(2) = Price Likelihood Value   : 166.1470  Regist Likelihood Value  : 36.5027
-  + AR(3) = Price Likelihood Value   : 157.8658  Regist Likelihood Value  : 35.2445
-  + AR(4) = Price Likelihood Value   : 165.8597  Regist Likelihood Value  : 37.0061 (Selected Final Model)
- 
- #### Compare to HP Filter
- ![image](https://user-images.githubusercontent.com/109870987/227563755-4b237b42-c599-4384-a2dd-06d3964f8e77.png)
- 
+___
 ___
 ## **Dynamic Common Factor Model.**
 ### Model 1 (Practice Jeonbuk)
@@ -170,14 +145,7 @@ $Mu$ = [ $Mu$ ; 0 ; 0 ]<br/>
 $F$ = [ $\phi_1\ \phi_2$ 0 ; 1 0 0 ; 0 1 0 ]  <br/>
 $Q$ = [ $\sigma_v^2$ 0 0 ; 0 0 0 ; 0 0 0 ]<br/>
 
-## Result
-![image](https://user-images.githubusercontent.com/109870987/222414639-c7491f32-85cc-4a86-982d-7414593534d0.png)
-
-+ The result in the first row shows the estimated coincident composite index (Jeonbuk).<br/>
-+ The result in the second row is the actual published coincident composite index (Jeonbuk).<br/>
-+ The result in row 2, column 2 is the cyclical fluctuation of the coincident composite index, which the trend is removed from the result in row 2, column 1. <br/>
-+ If you check the **Log_1Diff_result_Plot**, which is the result of estimation with the log-first-difference data, you can see that the estimation result and the picture of 2nd row, 2nd column are the same. <br/>
-
+___
 ### Model 2 (Practice K.H_Kang(2012))
 
 $Y_{1t} = \Lambda_1 * B_{t} + e_{1t},\quad e_{1t} \sim iidN(0, \sigma^2_{e1})$<br/>
@@ -216,15 +184,7 @@ $R$ = diag($\sigma^2_{e1}\,\sigma^2_{e2}\,\sigma^2_{e3}\,\sigma^2_{e4}\,\sigma^2
 $Mu$ = [ $Mu1$ ; $Mu2$ ; $Mu3$ ]<br/>
 $F$ = [ $\phi_1\$ 0 0 ; 0 $\phi_2$ 0 ; 0 0 $\phi_3$ ]  <br/>
 $Q$ = [ $\sigma_v^1$ $Cov_1$ $Cov_2$ ; $Cov_1$ $\sigma_v^2$ $Cov_3$ ; $Cov_2$ $Cov_3$ $\sigma_v^3$ ]<br/>
-
-## Result
-![image](https://user-images.githubusercontent.com/109870987/222676751-c76d8ba5-7df3-4679-8c2c-2f40b7a87789.png)
-
-
-+ Three-Factor Dynamic Nelson-Siegel Model result(Using Korean goverment bond).<br/>
-+ $B1$ is similar to the $10year$ Korean government bond yield curve 
-+ $B2$ is similar to the $10year - 3month$ Korean government bond yield curve 
-+ $B3$ is similar to the $2year*2 - 10year + 3month$ Korean government bond yield curve 
+___
 ___
 ## **Time Varying Parameter Model.**
 ### Model
@@ -252,13 +212,3 @@ $Mu$ = [0 0 0 0]'<br/>
 $F$ = eye(4)  <br/>
 $Q$ = [ $\sigma_v^0$ 0  0  0 ; 0 $\sigma_v^1$ 0  0 ; 0  0  $\sigma_v^2$  0 ; 0  0  0  $\sigma_v^3$]<br/>
 
-
-
-
-![image](https://user-images.githubusercontent.com/109870987/222680642-3f3e7199-e546-449a-94a9-b3252f41fefe.png)
-
-+ The interest rate $I$ at period $t$ can be explained by the Constant term, Consumer Price Index($CPI$), Index of All Industrial Production($IAIP$)(excluding agriculture, forestry, etc), and Interst rate($I$) at period $t-1$.<br/>
-+ $B0$ shows a downward trend over time and recently rises.
-+ $B1$ shows a downward trend over time and recently rises.
-+ $B2$ cannot be considered time-varying.
-+ $B3$ time-varyed strongly around the end of 2008, but it cannot be said that it continued to time-vary throughout the entire period.
